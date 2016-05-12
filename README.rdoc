@@ -1,14 +1,14 @@
 == README
 
 To Do
--Upgrade to Rails 4.2.6
--design layout
--code layout
--add validations
--harden database columns
--print-ready
--paginate
--destroy dependent
+Upgrade to Rails 4.2.6
+design layout
+code layout
+add validations
+harden database columns
+print-ready
+paginate
+destroy dependent
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
