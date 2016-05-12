@@ -1,0 +1,2 @@
+module CakeStylesHelper
+end

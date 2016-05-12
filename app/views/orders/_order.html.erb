@@ -1,0 +1,12 @@
+	<tr class="<%= order.cancelled ? 'cancelled' : cycle('odd', 'even') %>">
+		<td><%= pickup_link(order) %></td>
+		<td><%= order.pickup_date.strftime('%d/%m') %></td>
+		<td><%= order.pickup_time.strftime('%l:%M%p') %></td>
+		<td><%= cake_style_link(order) %></td>
+		<td><%= order.cake_size.name %></td>
+		<td><%= order.cake_message %></td>
+		<td><%= order.notes %></td>
+		<td><%= link_to 'Show', order_path(order), class: 'action' %></td>
+		<td><%= link_to 'Edit', edit_order_path(order), class: 'action' %></td>
+		<td><%= cancel_switch(order) %></td>
+	 </tr>

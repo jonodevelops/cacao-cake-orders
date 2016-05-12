@@ -1,0 +1,40 @@
+ <div class='form'>
+ 	<div class='row 1'>
+	  <strong><%= content_tag(:h1, "#{@cake_style.name}") %></strong>
+	</div>
+
+	<div class='row 2'>
+	  	<%= @cake_style.current ? 'CURRENT STYLE' : content_tag(:div, 'NOT CURRENT STYLE', class: 'status') %>
+	</div>
+
+	<div class='row 3'>
+	  <div class='column 1'>
+		<%= image_tag @cake_style.style_photo.url(:medium) %>
+	  </div>
+	  <div class='column 2'>
+	  	<strong>Description:</strong>
+	  	<%= @cake_style.description %>
+	  </div>
+	</div>
+
+	<div class="row 4 actions">
+	  <%= link_to 'Order', new_order_path(cake_style_id: @cake_style.id), class: 'action' %>
+	  <%= link_to 'Edit', edit_cake_style_path(@cake_style), class: 'action' %>
+	</div>
+</div>
+
+<h2>Upcoming Orders</h2>
+<table>
+<tr>
+	<th>Pickup</th>
+	<th>Date</th>
+	<th>Time</th>
+	<th>Style</th>
+	<th>Size</td>
+	<th>Message</th>
+	<th>Notes</th>
+	<th colspan="3"></th>
+</tr>
+
+<%= render partial: @orders %>
+</table>

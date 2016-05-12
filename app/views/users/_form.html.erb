@@ -1,0 +1,36 @@
+<div class='form'>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :username, placeholder: 'USERNAME' %>
+  </div>
+  <div class="field">
+    <%= f.collection_select :location_id, @locations, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :admin, 'Admin' %>
+    <%= f.check_box :admin %>
+  </div>
+  <div class="info">
+    <%= f.label 'Leave Blank Unless Changing Password' if User.exists?(@user) %> 
+  </div>
+  <div class="field">
+    <%= f.text_field :password, placeholder: 'PASSWORD' %>
+    <%= f.text_field :password_confirmation, placeholder: 'CONFIRM PASSWORD' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,13 @@
+<%= form_for([@order, @order.comments.build]) do |f| %>
+  <p>
+    <%= f.label :commenter %><br>
+    <%= f.grouped_collection_select :commenter, @locations, :staff, :name, :id, :username, prompt: 'Choose Staff' %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

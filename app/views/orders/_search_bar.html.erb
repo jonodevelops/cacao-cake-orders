@@ -1,0 +1,48 @@
+<%= form_tag( :search_orders, method: :get, class: 'search-bar') do %>
+	<div>
+		<div>
+			<%= label_tag :uncurrent, 'Hide Current Styles:' %>
+			<%= check_box_tag :uncurrent, '1', @uncurrent_checked.present? %>
+		</div>
+		<div>
+			<%= label_tag :uncancelled, 'Hide Cancelled Orders:' %>
+			<%= check_box_tag :uncancelled, '1', @uncancelled_checked.present? %>
+		</div>
+		<div>
+	 		<%= text_field_tag :customer_phone, @selected_customer_phone, placeholder: 'Customer Phone' %>
+	 	</div>
+	</div>
+	<div>
+		<div>
+			<%= label_tag :pickup_date, 'Pickup Date:' %>
+		</div>
+		<div>
+			<%= label_tag :pickup_start_date, 'From' %>
+			<%= select_date @pickup_start_date || Time.zone.today, start_year: 2016, end_year: 2026, include_blank: :true, prefix: :pickup_start_date %>
+		</div>
+		<div>
+			<%= label_tag :pickup_end_date, 'To' %>
+			<%= select_date @pickup_end_date || Time.zone.today + 1.month, start_year: 2016, end_year: 2026, include_blank: :true, prefix: :pickup_end_date %>
+		</div>
+	</div>
+	<div>
+		<div>
+			<%= label :order_location_id, 'Ordered At' %>
+			<%= select_tag :order_location_id, options_from_collection_for_select(@locations, 'id', 'name', @selected_order_location_id), { prompt: 'All Locations' } %>
+		</div>
+		<div>
+		<%= label :pickup_location_id, 'Pickup At' %>
+		<%= select_tag :pickup_location_id, options_from_collection_for_select(@locations, 'id', 'name', @selected_pickup_location_id), { prompt: 'All Locations' } %>
+ 		</div>
+		<div>
+	    <%= label :user_id, 'Order Taken By' %>
+	    <%= select_tag :user_id, option_groups_from_collection_for_select(@locations, :staff, :name, :id, :username, @selected_user_id), { prompt: 'Choose Staff Member' } %>
+		</div>
+	 </div>
+	 <div>
+	 	<%= submit_tag "Filter List", class: 'action' %>
+	 </div>
+	
+
+	
+<% end %>

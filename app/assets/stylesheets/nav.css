@@ -1,0 +1,52 @@
+
+nav a:link, nav a:visited, nav a:hover, nav a:active {
+	color: black;
+	background: #ddd;
+	text-decoration: ;
+}
+
+nav {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	width:100%;
+	position: ;
+	background: #ccc;
+	margin: ;
+	padding: ;
+	border: ;
+}
+
+.main-nav {
+	min-height: 3em;
+	position: fixed;
+	bottom: 0;
+}
+
+.subnav {
+	height: 3em;
+	position: fixed;
+	top: 0;
+}
+
+nav a {
+	border: 0px solid white;
+	border-radius: 3px;
+	box-shadow: 0px 0px 0.3em 0.3em rgba(0,0,0,0.2);
+	height: ;
+	line-height: ;
+	margin: auto;
+	padding: 0.5% 1%;
+	font-size: ;
+	background: ;
+	color: ;
+	position:;
+}
+
+nav div {
+	margin: auto;
+	height: 50%;
+	background: white;
+	border-left: 1px solid rgba(0,0,0,0.66);
+	box-shadow: 0px 0px 0.1em 0.1em rgba(0,0,0,0.2);
+}

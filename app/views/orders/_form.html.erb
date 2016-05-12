@@ -1,0 +1,80 @@
+<div class='form'>
+<%= form_for @order do |f| %>
+
+ <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:
+      </h2>
+      <ul>
+        <% @order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+<div class='row 1'>
+  <div class='column 1'>
+    <div>
+      <%= f.text_field :customer_name, placeholder: 'Customer' %>
+    </div>
+    <div>
+      <%= f.text_field :customer_phone, placeholder: 'Phone' %>
+    </div>
+      <%= f.label '', 'Ordered By' %>
+    <div>
+      <%= f.grouped_collection_select :user_id, @locations, :staff, :name, :id, :username, prompt: 'Choose Staff' %>
+    </div>
+      <%= f.label 'Style' %>
+    <div>
+      <%= f.collection_select :cake_style_id, @available_cake_styles, :id, :name, selected: @cake_style %>
+    </div>
+      <%= f.label 'Size' %>
+    <div>
+      <%= f.collection_select :cake_size_id, @cake_sizes, :id, :name,  prompt: 'Choose Size' %>
+    </div>
+  </div>
+  <div class='column 2'>
+    <div>
+      <%= f.text_field :cake_message, placeholder: 'Type Message or Choose File', maxlength: 32, size: 32 %>
+    </div>
+    <div>
+      <%= f.file_field :message_photo %>
+    </div>
+    <div>
+      <%= f.text_field :price, placeholder: 'Price' %>
+    </div>
+    <div>
+      <%= f.text_area :deposit, placeholder: 'Deposit - Leave Blank If Paid In Full' %>
+    </div>
+  </div>
+  <div class='column 3'>
+    <div>
+      <%= f.text_area :notes, placeholder: 'Notes - Leave Blank If Not Required', class: 'notes' %>
+    </div>
+    <div>
+      <%= @order.cake_style.present? ? image_tag(@order.cake_style.style_photo.url(:thumb)) : '' %>
+    </div>
+  </div>
+</div>
+
+<div class='row 2'>
+  <div>
+    <%= f.label 'Ordered' %><br>
+    <%= f.collection_select :order_location_id, @locations, :id, :name, selected: @current_user.location_id %>
+    <%= f.date_select :order_date, start_year: 2016, end_year: 2026 %></br>
+  </div>
+  <div>
+    <%= f.label 'Pickup' %><br>
+    <%= f.collection_select :pickup_location_id, @locations, :id, :name, selected: @current_user.location_id %>
+    <%= f.date_select :pickup_date, start_year: 2016, end_year: 2026, default: Time.zone.tomorrow %>
+    <%= f.time_select :pickup_time, start_hour: 12, end_hour: 19, time_separator: ':', minute_step: 30, ampm: true, ignore_date: true %>
+  </div>
+</div>
+<div class='row 3'>
+    <%= f.submit class: 'action' %>
+</div>
+
+<% end %>
+</div>

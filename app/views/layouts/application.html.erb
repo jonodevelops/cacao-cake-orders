@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Orders</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<% if session[:user_id].present? %>
+		<%= render partial: 'main_nav' %>
+	<% end %>
+	<%= render partial: 'subnav' %>
+	<p id="notice"><%= notice %></p>
+<div id='view'>
+<!-- Everything in the view lies with this span-->
+<%= yield %>
+
+</div>
+
+</body>
+</html>

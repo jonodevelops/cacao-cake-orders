@@ -1,0 +1,2 @@
+module CakeSizesHelper
+end

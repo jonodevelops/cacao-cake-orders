@@ -1,0 +1,22 @@
+<h1>Daily Orders</h1>
+
+<div class='actions'>
+	<%= link_to 'Previous Day', daily_orders_path(date: @date - 1.day), class: 'action' %>
+	<%= link_to 'Next Day', daily_orders_path(date: @date + 1.day), class: 'action' %>
+</div>
+
+<table>
+	<%= content_tag(:h2, @date.strftime('%d/%m')) %>
+	<tr>
+		<th>Pickup</th>
+		<th>Date</th>
+		<th>Time</th>
+		<th>Style</th>
+		<th>Size</th>
+		<th>Message</th>
+		<th>Notes</th>
+		<th colspan="2"></th>
+	</tr>
+
+	<%= render @orders %>
+</table>

@@ -1,0 +1,14 @@
+<div class="cake-list-item">
+  <div class="cakephoto">
+    <%= link_to image_tag(cake_style.style_photo.url(:thumb)), cake_style_path(cake_style.id) %>
+  </div>
+  <div class="cake-info">
+    <%= link_to cake_style.name, cake_style_path(cake_style.id), class: 'action' %>
+    <p><%= cake_style.orders.upcoming.count %> UPCOMING</p>
+    <p><%= cake_style.orders.pickup_on(Time.zone.today).count %> TODAY</p>
+    <div class="actions">
+      <%= link_to 'Order', new_order_path(cake_style_id: cake_style.id), class: 'action' %>
+      <%= link_to 'Edit', edit_cake_style_path(cake_style), class: 'action' %>
+    </div>
+  </div>
+</div>

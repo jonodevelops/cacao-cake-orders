@@ -1,0 +1,29 @@
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 3em;
+}
+
+.odd {
+	background-color: #ddd;
+}
+.even {
+	background-color: #eee;
+}
+.cancelled {
+	background-color: pink;
+}
+
+
+.odd td {
+	padding: 0.5em;
+	text-align: center;
+}
+.even td {
+	padding: 0.5em;
+	text-align: center;
+}
+.cancelled td {
+	padding: 0.5em;
+	text-align: center;
+}

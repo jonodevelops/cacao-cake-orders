@@ -1,0 +1,8 @@
+
+<div class='column'>
+	<%= form_tag action: :attempt_login do %>
+		<%= text_field_tag :username, nil, placeholder: 'Username' %>
+		<%= text_field_tag :password, nil, placeholder: 'Password' %>
+		<%= submit_tag 'Login' %>
+	<% end %>
+</div>

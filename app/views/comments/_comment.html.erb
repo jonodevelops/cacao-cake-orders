@@ -1,0 +1,9 @@
+   <div class="comment <%= cycle('odd', 'even') %>"
+    <strong><%= User.find(comment.commenter).username %></strong>
+    <%= comment.body %></br>
+    <%= comment.created_at %>
+
+    <%= link_to 'Destroy Comment', [comment.order, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class: 'action' %>
+   </div>

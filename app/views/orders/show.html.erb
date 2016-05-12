@@ -1,0 +1,76 @@
+<div class='form'>
+<div class='actions row'>
+  <%= link_to 'Edit', edit_order_path(@order), class: 'action' %>
+  <%= cancel_switch(@order) %>
+</div>
+
+<div class='statuses row'>
+  <%= cancelled?(@order) %>
+  <%= not_current_style?(@order) %>
+  <%= outstanding_balance?(@order) %>
+</div>
+
+<div class='row 1'>
+  <div class='column 1'>
+    <div>
+      Customer Name: <%= @order.customer_name %>
+    </div>
+    <div>
+      Customer Phone: <%= @order.customer_phone %>
+    </div>
+    <div>
+      Ordered By: <%= @order.user.username %>
+    </div>
+    <div>
+      <%= link_to @order.cake_style.name, cake_style_path(@order.cake_style), class: 'action' %>
+    </div>
+    <div>
+      <%= @order.cake_size.name %>
+    </div>
+  </div>
+  <div class='column 2'>
+    <div>
+      <%= @order.cake_message %>
+    </div>
+    <div>
+      <%= image_tag @order.message_photo.url(:medium) if @order.message_photo? %>
+    </div>
+    <div>
+      Price: <%= @order.price %>
+    </div>
+    <div>
+      Deposit: <%= @order.deposit %>
+    </div>
+  </div>
+  <div class='column 3'>
+    <div>
+      <%= @order.notes %>
+    </div>
+    <div>
+      <%= image_tag @order.cake_style.style_photo.url(:thumb) if @order.cake_style.style_photo %>
+    </div>
+  </div>
+</div>
+
+<div class='row 2'>
+  <div>
+    Ordered: 
+    <%= link_to @order.order_location.name, location_path(@order.order_location), class: 'action' %>
+    <%= @order.order_date.strftime('%d/%m') %>
+  </div>
+  <div>
+    Pickup:
+    <%= link_to @order.pickup_location.name, location_path(@order.pickup_location), class: 'action' %>
+    <%= @order.pickup_date.strftime('%d/%m') %>
+    <%= @order.pickup_time.strftime('%l:%M%p') %>
+  </div>
+</div>
+
+<div>
+<%= render @order.comments %>
+</div>
+
+<%= render 'comments/form' %>
+
+
+</div>

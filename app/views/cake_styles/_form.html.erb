@@ -1,0 +1,43 @@
+<div class='form'>
+<%= form_for(@cake_style) do |f| %>
+  <% if @cake_style.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cake_style.errors.count, "error") %> prohibited this cake_style from being saved:</h2>
+
+      <ul>
+      <% @cake_style.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='row 1'>
+    <%= f.text_field :name, placeholder: 'Cake Style Name' %>
+  </div>
+
+  <div class='row 2'>
+    <div>
+      <%= f.label :current %>
+      <%= f.check_box :current %>
+    </div>
+  </div>
+
+  <div class='row 3'>
+    <div class='column 1'>
+      <%= f.label :style_photo, 'Photo' %><br>
+      <%= @cake_style.style_photo.present? ? image_tag(@cake_style.style_photo.url(:medium)) : '' %>
+      <%= f.file_field :style_photo %>
+    </div>
+    <div class='column 2'>
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: 'notes' %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save Cake Style', class: 'action' %>
+    <%= link_to 'Destroy', @cake_style, method: :delete, data: { confirm: 'Are you sure?' }, class: 'action' %>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,8 @@
+<tr class="<%= cycle('odd', 'even') %>">
+		<td><%= order.cake_message %></td>
+		<td><% if order.message_photo? %>
+			<%= image_tag order.message_photo.url(:medium) %>
+			<% end %></td>
+		<td><%= link_to 'Show', order_path(order) %></td>
+		<td><%= link_to 'Edit', edit_order_path(order) %></td>
+</tr>

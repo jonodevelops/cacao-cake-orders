@@ -1,0 +1,11 @@
+<nav class="main-nav" role=navigation>
+	<%= link_to 'CAKES', current_cake_styles_path %>
+	<%= link_to 'ORDERS', orders_path %>
+	<%= User.find(session[:user_id]).location.name %>
+	<%= link_to 'NEW ORDER', new_order_path %>
+	<% if User.find(session[:user_id]).admin %>
+		<%= link_to 'ADMIN PANEL', :admin_panel %>
+	<% else %>
+		<%= link_to 'LOGOUT', :logout %>
+	<% end %>
+</nav>

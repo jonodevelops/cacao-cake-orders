@@ -1,0 +1,22 @@
+.search-bar {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	width:100%;
+	position: ;
+	background: #eee;
+	margin: ;
+	padding-left: ;
+	padding-right: ;
+	border: ;
+}
+
+.search-bar div {
+	display: flex;
+	border: ;
+	padding: 0.25em;
+}
+
+.search-bar div div {
+	padding: 1em;
+}
