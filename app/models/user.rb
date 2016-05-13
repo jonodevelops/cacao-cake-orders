@@ -8,4 +8,8 @@ scope :sorted, -> { order(username: :asc) }
 scope :staff, ->  { where('admin = ?', :false) }
 scope :located_at, -> (location) { where('location_id = ?', location) }
 
+	def has_orders?
+		orders.any?
+	end
+
 end

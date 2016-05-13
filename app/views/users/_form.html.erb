@@ -31,6 +31,7 @@
   </div>
   <div class="actions">
     <%= f.submit %>
+    <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "action" if @user.persisted? %>
   </div>
 <% end %>
 </div>

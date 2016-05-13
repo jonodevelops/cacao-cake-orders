@@ -53,9 +53,13 @@ class OrdersController < ApplicationController
 
 	def destroy
 		@order = Order.find(params[:id])
-		@order.destroy
-
-		redirect_to orders_path
+		if @order.cancelled
+		  if @order.destroy
+		  	redirect_to :orders, notice: 'Order was successfuly destroyed'
+		  end
+		else
+			redirect_to @order, notice: 'Order must be cancelled before destroyed'
+		end
 	end
 
 	def cancel_switch

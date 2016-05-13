@@ -52,8 +52,13 @@ class CakeStylesController < ApplicationController
   # DELETE /cake_styles/1
   # DELETE /cake_styles/1.json
   def destroy
-    @cake_style.destroy
-      redirect_to cake_styles_url, notice: 'Cake style was successfully destroyed.'
+    if @cake_style.has_orders?
+      redirect_to @cake_style, notice: 'Cannot destroy Cake Styles with Orders'
+    else
+      if @cake_style.destroy 
+        redirect_to cake_styles_url, notice: 'Cake style was successfully destroyed.'
+      end
+    end
   end
 
   private

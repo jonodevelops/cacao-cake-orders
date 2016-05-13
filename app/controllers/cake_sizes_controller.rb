@@ -37,8 +37,13 @@ class CakeSizesController < ApplicationController
 
   # DELETE /cake_sizes/1
   def destroy
-    @cake_size.destroy
-    redirect_to cake_sizes_url, notice: 'Cake size was successfully destroyed.'
+    if @cake_size.has_orders?
+      redirect_to :cake_sizes, notice: 'Cannot destroy Cake Size with associated Orders'
+    else
+      if @cake_size.destroy 
+        redirect_to :cake_sizes, notice: 'Cake Size was successfully destroyed.'
+      end
+    end
   end
 
   private

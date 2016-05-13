@@ -47,8 +47,15 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
-    @location.destroy
-    redirect_to :locations, notice: 'Location was successfully destroyed.'
+    if @location.has_orders?
+      redirect_to :locations, notice: 'Cannot destroy Location with associated Orders'
+    elsif @location.has_users?
+      redirect_to :locations, notice: 'Cannot destroy Location with associated Users'
+    else
+      if @location.destroy 
+        redirect_to :locations, notice: 'Location was successfully destroyed.'
+      end
+    end
   end
 
   private

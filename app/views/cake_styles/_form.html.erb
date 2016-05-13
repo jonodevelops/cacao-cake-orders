@@ -37,7 +37,7 @@
 
   <div class="actions">
     <%= f.submit 'Save Cake Style', class: 'action' %>
-    <%= link_to 'Destroy', @cake_style, method: :delete, data: { confirm: 'Are you sure?' }, class: 'action' %>
+    <%= link_to 'Destroy', @cake_style, method: :delete, data: { confirm: 'Are you sure?' }, class: 'action' if @cake_style.persisted?  %>
   </div>
 <% end %>
 </div>

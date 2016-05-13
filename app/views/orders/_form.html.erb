@@ -73,7 +73,8 @@
   </div>
 </div>
 <div class='row 3'>
-    <%= f.submit class: 'action' %>
+  <%= f.submit class: 'action' %>
+  <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'action' if @order.persisted?  %>
 </div>
 
 <% end %>
