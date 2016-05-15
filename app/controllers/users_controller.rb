@@ -49,8 +49,12 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    if @user == User.find(session[:user_id])
+      redirect_to users_url, notice: 'You  may not destroy yourself, silly!'
+    else
+      @user.destroy
       redirect_to users_url, notice: 'User was successfully destroyed.'
+    end
   end
 
   private
@@ -61,12 +65,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :location_id, :admin, :password, :password_confirmation)
+      params.require(:user).permit(:username, :location_id, :password, :password_confirmation)
     end
 
     def load_select_objects
       @locations = Location.all
-      
     end
 
 end

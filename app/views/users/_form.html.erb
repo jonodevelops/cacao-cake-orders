@@ -18,10 +18,6 @@
   <div class="field">
     <%= f.collection_select :location_id, @locations, :id, :name %>
   </div>
-  <div class="field">
-    <%= f.label :admin, 'Admin' %>
-    <%= f.check_box :admin %>
-  </div>
   <div class="info">
     <%= f.label 'Leave Blank Unless Changing Password' if User.exists?(@user) %> 
   </div>
