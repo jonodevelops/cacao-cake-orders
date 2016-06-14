@@ -16,11 +16,12 @@ class OrdersController < ApplicationController
 
 	def new
 		@order = Order.new({ cake_style_id: params[:cake_style_id] })
+
 		if params[:cake_style_id]
 		@cake_style = CakeStyle.find(params[:cake_style_id])
 		@available_cake_styles << @cake_style
 		end
-		
+		@cake_style ||= @available_cake_styles.first
 	end
 
 	def create

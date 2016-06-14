@@ -28,7 +28,7 @@
     </div>
       <%= f.label 'Style' %>
     <div>
-      <%= f.collection_select :cake_style_id, @available_cake_styles, :id, :name, selected: @cake_style %>
+      <%= f.collection_select :cake_style_id, @available_cake_styles, :id, :name, selected: @cake_style.id %>
     </div>
       <%= f.label 'Size' %>
     <div>
