@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
 	belongs_to :cake_size, inverse_of: :orders
 
 	has_attached_file :message_photo,
-		styles: { medium: "300x300>", thumb: "150x150>" },
+		styles: { original: "500x500>", medium: "300x300>", thumb: "150x150>" },
 		convert_options: { },
 		default_url: "/images/:style/missing.png"
 
