@@ -16,12 +16,6 @@ class OrdersController < ApplicationController
 
 	def new
 		@order = Order.new({ cake_style_id: params[:cake_style_id] })
-
-		if params[:cake_style_id]
-		@cake_style = CakeStyle.find(params[:cake_style_id])
-		@available_cake_styles << @cake_style
-		end
-		@cake_style ||= @available_cake_styles.first
 	end
 
 	def create
@@ -137,6 +131,11 @@ private
 		@locations = Location.all
 		@available_cake_styles = CakeStyle.current_styles
 		@cake_sizes = CakeSize.all
+		if params[:cake_style_id]
+		@cake_style = CakeStyle.find(params[:cake_style_id])
+		@available_cake_styles << @cake_style
+		end
+		@cake_style ||= @available_cake_styles.first
 		@current_user = User.find(session[:user_id])
 		@users = User.sorted.staff.located_at(@current_user.location_id)
 	end
