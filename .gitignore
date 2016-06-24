@@ -17,7 +17,7 @@
 /tmp
 
 # Ignore secrets.
-/config/secrets.yml
+#/config/secrets.yml
 
 # Ignore Environment Variables
 /config/application.yml
